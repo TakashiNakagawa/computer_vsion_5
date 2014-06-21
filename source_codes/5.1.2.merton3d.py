@@ -5,7 +5,9 @@ from pylab import *
 
 execfile('load_vggdata.py')
 
+
 # 3Dの点を描画する
+
 from mpl_toolkits.mplot3d import axes3d
 fig = figure()
 ax = fig.gca(projection='3d')

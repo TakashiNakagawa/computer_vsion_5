@@ -11,6 +11,7 @@ def compute_fundamental(x1,x2):
       から基礎行列を計算する。各列は次のような並びである。
       [x'*x, x'*y, x', y'*x, y'*y, y', x, y, 1] """
 
+
   n = x1.shape[1]
   if x2.shape[1] != n:
     raise ValueError("Number of points don't match.")
@@ -48,6 +49,7 @@ def plot_epipolar_line(im,F,x,epipole=None,show_epipole=True):
 
   m,n = im.shape[:2]
   line = dot(F,x)
+
 
   # エピポーラ線のパラメータと値
   t = linspace(0,n,100)
@@ -109,9 +111,10 @@ def compute_P_from_fundamental(F):
   """ 第2のカメラ行列(P1 = [I 0] を仮定)を、
      基礎行列から計算する """
 
+  #e.t * F = 0となるe
   e = compute_epipole(F.T) # left epipole
   Te = skew(e)
-  return vstack((dot(Te,F.T).T,e)).T
+  return vstack((dot(Te,F.T).T,e)).T#??
 
 def skew(a): 
   """ 任意のvについて a x v = Av になる交代行列A """
@@ -180,6 +183,7 @@ def compute_fundamental_normalized(x1,x2):
       から基礎行列を計算する。各列は次のような並びである。
       [x'*x, x'*y, x', y'*x, y'*y, y', x, y, 1] """
 
+  
   n = x1.shape[1]
   if x2.shape[1] != n:
     raise ValueError("Number of points don't match.")
